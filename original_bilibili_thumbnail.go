@@ -70,7 +70,7 @@ func OriginalBilibiliThumbnail(c echo.Context) error {
 		fmt.Sprintf("/rs:fit:%d:%d:1:1/background:000000/%s", width, height, base64.URLEncoding.EncodeToString([]byte(data.Data.View.Thumbnail))))
 	c.Logger().Debug(proxiedUrl)
 
-	err = rdb.Set(ctx, redisKey, proxiedUrl, time.Duration(24*time.Hour)).Err()
+	err = rdb.Set(ctx, redisKey, proxiedUrl, time.Duration(600*time.Second)).Err()
 	if err != nil {
 		c.Logger().Error(err)
 	}
