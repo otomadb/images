@@ -15,16 +15,16 @@ import (
 func OriginalNicovideoThumbnail(c echo.Context) error {
 	vid := c.Param("vid")
 	if vid == "" {
-		c.String(http.StatusBadRequest, "Bad request")
+		return c.String(http.StatusBadRequest, "Bad request")
 	}
 
 	size := c.FormValue("size")
 	if size == "" {
-		c.String(http.StatusBadRequest, "Bad request")
+		return c.String(http.StatusBadRequest, "Bad request")
 	}
 	width, height, err := ParseSize(size)
 	if err != nil {
-		c.String(http.StatusBadRequest, err.Error())
+		return c.String(http.StatusBadRequest, err.Error())
 	}
 
 	rdb := redis.NewClient(&redis.Options{Addr: os.Getenv("REDIS_ADDRESS")})
