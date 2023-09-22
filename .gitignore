@@ -1,0 +1,16 @@
+# misc
+.DS_Store
+*.pem
+
+# VSCode
+.vscode/settings.json
+
+# env
+.env
+!.env.example
+
+# tmp
+tmp
+
+# build
+images
