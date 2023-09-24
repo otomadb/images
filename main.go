@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"os"
 
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
@@ -11,7 +12,9 @@ var ctx = context.Background()
 
 func main() {
 	e := echo.New()
-	e.Debug = true
+
+	e.Debug = os.Getenv("DEBUG") == "true"
+
 	e.Use(middleware.Logger())
 
 	e.GET("/mads/:serial/primary", MADPrimaryThumbnail)
