@@ -14,6 +14,8 @@ func main() {
 	e.Debug = true
 	e.Use(middleware.Logger())
 
+	e.GET("/mads/:serial/primary", MADPrimaryThumbnail)
+
 	e.GET("/original/youtube/:vid", OriginalYoutubeThumbnail)
 	e.GET("/original/nicovideo/:vid", OriginalNicovideoThumbnail)
 	e.GET("/original/bilibili/:vid", OriginalBilibiliThumbnail)
