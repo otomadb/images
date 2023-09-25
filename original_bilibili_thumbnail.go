@@ -18,11 +18,11 @@ func OriginalBilibiliThumbnail(c echo.Context) error {
 		return c.String(http.StatusBadRequest, "Bad request")
 	}
 
-	size := c.FormValue("size")
-	if size == "" {
+	scale := c.FormValue("scale")
+	if scale == "" {
 		return c.String(http.StatusBadRequest, "Bad request")
 	}
-	width, height, err := ParseSize(size)
+	width, height, err := ParseScale(scale)
 	if err != nil {
 		return c.String(http.StatusBadRequest, err.Error())
 	}
