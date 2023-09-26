@@ -11,6 +11,7 @@ import (
 var ctx = context.Background()
 
 func main() {
+
 	e := echo.New()
 
 	e.Debug = os.Getenv("DEBUG") == "true"
@@ -22,6 +23,7 @@ func main() {
 	e.GET("/original/youtube/:vid", OriginalYoutubeThumbnail)
 	e.GET("/original/nicovideo/:vid", OriginalNicovideoThumbnail)
 	e.GET("/original/bilibili/:vid", OriginalBilibiliThumbnail)
+	e.GET("/original/soundcloud", OriginalSoundcloudThumbnail)
 
 	e.Logger.Fatal(e.Start(":1323"))
 }
