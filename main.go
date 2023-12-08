@@ -20,6 +20,8 @@ func main() {
 
 	e.GET("/mads/:serial/primary", MADPrimaryThumbnail)
 
+	e.GET("/proxy", Proxy)
+
 	e.GET("/original/youtube/:vid", OriginalYoutubeThumbnail)
 	e.GET("/original/nicovideo/:vid", OriginalNicovideoThumbnail)
 	e.GET("/original/bilibili/:vid", OriginalBilibiliThumbnail)
