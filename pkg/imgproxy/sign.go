@@ -1,5 +1,4 @@
-// https://github.com/imgproxy/imgproxy/blob/f404e3d23078c9a2cc654b73ca2bd83704aa0f6d/examples/signature.go
-package main
+package imgproxy
 
 import (
 	"crypto/hmac"
@@ -7,10 +6,11 @@ import (
 	"encoding/base64"
 	"encoding/hex"
 	"log"
+
 	"os"
 )
 
-func SignURL(path string) string {
+func SignPath(path string) (string, error) {
 	var key = os.Getenv("IMGPROXY_KEY")
 	if key == "" {
 		panic("IMGPROXY_KEY is not set")
@@ -31,10 +31,12 @@ func SignURL(path string) string {
 
 	if keyBin, err = hex.DecodeString(key); err != nil {
 		log.Fatal(err)
+		return "", err
 	}
 
 	if saltBin, err = hex.DecodeString(salt); err != nil {
 		log.Fatal(err)
+		return "", err
 	}
 
 	mac := hmac.New(sha256.New, keyBin)
@@ -42,5 +44,5 @@ func SignURL(path string) string {
 	mac.Write([]byte(path))
 	signature := base64.RawURLEncoding.EncodeToString(mac.Sum(nil))
 
-	return baseUrl + "/" + signature + path
+	return baseUrl + "/" + signature + path, nil
 }

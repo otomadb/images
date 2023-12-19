@@ -7,10 +7,15 @@
 
 # env
 .env
+.envrc
 !.env.example
 
-# tmp
-tmp
-
 # build
-images
+main
+
+# tmp
+tmp/
+
+# generated files
+gen
+
