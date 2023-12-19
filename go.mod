@@ -1,6 +1,6 @@
 module otomadb.com/ixgyohn
 
-go 1.21.1
+go 1.21.5
 
 require google.golang.org/protobuf v1.31.0
 
