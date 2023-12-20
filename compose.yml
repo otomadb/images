@@ -3,13 +3,13 @@ version: "3.9"
 
 services:
   redis:
-    image: redis:7.0
+    image: redis:7.0@sha256:57371e2a215221778b4f1f1a3b2898cab83def823f80ed46c3caab5d7bc9cd3c
     ports:
       - target: 6379
         published: 16379
 
   imgproxy:
-    image: darthsim/imgproxy:latest
+    image: darthsim/imgproxy:latest@sha256:68b76f9d056d4105d5eac3072a430db12a766ffb0fbdbfd11b4fc48c1dc80df4
     ports:
       - target: 8080
         published: 18080
